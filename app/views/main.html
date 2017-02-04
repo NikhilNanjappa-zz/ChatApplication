@@ -1,0 +1,13 @@
+<div class="register_container">
+  <p>Please register if you're a new user or login</p>
+  <div class="username">
+    <input type="text" ng-model="username" required/>
+  </div>
+  <div class="password">
+    <input type="password" ng-model="password" required/>
+  </div>
+  <div>
+    <input type="button" class="btn btn-success" ng-click="authenticate(username, password, 'register');" value="Register">
+    <input type="button" class="btn btn-primary" ng-click="authenticate(username, password, 'login');" value="Login">
+  </div>
+</div>
