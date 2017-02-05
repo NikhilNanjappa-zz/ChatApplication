@@ -10,7 +10,7 @@ body {
   font: 14px/20px "Lato", Arial, sans-serif;
 }
 
-//override bootstrap classes
+//override bootstrap classes - start
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
@@ -40,25 +40,69 @@ body {
 .container-fluid {
   padding: 0;
 }
-//override bootstrap classes
+//override bootstrap classes - end
 
+// login form styles - start
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+  p {
+    margin-bottom: 15px;
+  }
+
+  input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  button {
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 40%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin: 0 0 0 25px;
+
+    &:first-of-type {
+      margin: 0 25px 0 0;
+    }
+
+    &:hover, &:active, &:focus {
+      background: #43A047;
+    }
+  }
+}
+// login form styles - end
+
+// chat room styles - start
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-.register_container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-top: 150px;
-
-  .username, .password {
-    margin: 10px;
-  }
 }
 
 .main {
@@ -75,7 +119,8 @@ body {
 
   ul {
     padding: 20px;
-    height: 770px;
+    height: 720px;
+    overflow-y: scroll;
     list-style: none;
 
     li {
@@ -138,7 +183,13 @@ body {
     padding: 30px 30px 20px;
     border-bottom: 2px solid white;
     overflow-y: scroll;
-    height: 575px;
+    height: 450px;
+    background: white;
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
 
     .message-data {
       margin-bottom: 15px;
@@ -156,37 +207,10 @@ body {
       font-size: 16px;
       border-radius: 7px;
       margin-bottom: 30px;
-      width: 90%;
+      width: 60%;
       position: relative;
-
-      &:after {
-        bottom: 100%;
-        left: 7%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-bottom-color: $green;
-        border-width: 10px;
-        margin-left: -10px;
-      }
-    }
-
-    .my-message {
-      background: $green;
-    }
-
-    .other-message {
       background: $blue;
-
-      &:after {
-        border-bottom-color: $blue;
-        left: 93%;
-      }
     }
-
   }
 
   .chat-message {
@@ -232,10 +256,6 @@ body {
   color: $orange;
 }
 
-.me {
-  color: $blue;
-}
-
 .align-left {
   text-align: left;
 }
@@ -256,3 +276,5 @@ body {
   clear: both;
   height: 0;
 }
+
+// chat room styles - start
