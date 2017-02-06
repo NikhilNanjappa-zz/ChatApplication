@@ -2,12 +2,12 @@
   <div class="sidebar clearfix">
     <div class="people-list" id="people-list">
       <ul class="list">
-        <li class="clearfix" ng-repeat="user in users" ng-click="startConversation(user)">
+        <li class="clearfix" ng-repeat="user in users" ng-click="startConversation(user.name)">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
           <div class="about">
-            <div class="name">{{ user }}</div>
-            <div class="status">
-              online
+            <div class="name">{{ user.name }}</div>
+            <div class="status" ng-class="{'online': user.status == 'online', 'offline': user.status == 'offline'}">
+              {{ user.status }}
             </div>
           </div>
         </li>
