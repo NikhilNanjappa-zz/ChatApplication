@@ -4,32 +4,36 @@
 ### Client Build
 
 1) Install **grunt** and **bower** using `npm install -g grunt-cli bower`
+
 2) Clone the repo to your local directory.
+
 3) Run `npm install` and `bower install` from the application root.
+
 4) Run `grunt` or `grunt build` for building
+
 5) Run `grunt serve` to preview the app in a default browser.
 
 ### Implementation Overview
 
 Let me start by listing all the controllers and services in the SPA and dive into the details later.
 
-> Controllers
+> #### Controllers
 
 HomeCtrl
 - created only to access control outside the ng view scope - header, logout etc.
 - makes use of `authenticateService`.
 
 
-MainCtrl 
+MainCtrl
 - contains all the landing page, authentication(login / register) implementation including validation.
 - makes use of `authenticateService`, `Notification` service
 
 
-ChatRoomCtrl 
+ChatRoomCtrl
 - contains all the implementation within the chat room once the user is logged in successfully.
 - Makes use of the `authenticateService`, `Notification` service, `messageService`, `websocketService`.
 
-> Services
+> #### Services
 
 `Notification` - This is a library service provided by `angular-ui-notification`. This is used to show various warning, error, success notifications throughout the app to the user.
  
@@ -41,7 +45,7 @@ ChatRoomCtrl
 
 ### Implementation in detail
 
-> MainCtrl
+> #### MainCtrl
 
 - The root controller is MainCtrl, when the user launches the application he is redirected to the landing page where the user is asked to enter an username and password.
 - The fields are validated and hence entering an empty value on either of these would notify the user.
@@ -52,7 +56,7 @@ ChatRoomCtrl
 - Then based on the response, the appropriate notification is shown to the user - conflict in the credentials, invalid credentials or on success redirected to the chatroom.
 - Only on success, the response token from the server is stored in a `sessionStorage` to be used later.
 
-> ChatRoomCtrl
+> #### ChatRoomCtrl
 
 - The ChatRoomCtrl has an `init()` function to initialize few functions on the controller instantiation.
 - This init function first fetches the registered users from the servers to display on the UI.
@@ -75,7 +79,7 @@ ChatRoomCtrl
 - When in chat mode, the current user can also 'Get all previous conversations' with that user.
 - Clicking on this would clear the chat window of the messages and open a new chat window with previous conversations listed.
 
-> HomeCtrl 
+> #### HomeCtrl 
 
 - HomeCtrl is in the parent scope of both MainCtrl and ChatRoomCtrl, it is used only to access control outside of the ng view scope.
 - This is mainly done to have control on the elements outside ng view like the header which has logout functionality etc.
