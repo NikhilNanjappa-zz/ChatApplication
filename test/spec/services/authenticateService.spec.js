@@ -50,7 +50,7 @@ describe('Service: authenticateService', function() {
 
   it('should call the logout method', function () {
     var deferred = $q.defer();
-    var token = 'xxx';
+    var token = sessionStorage.AuthToken;
 
     spyOn(authenticateService, 'logout').and.returnValue(deferred.promise);
     scope.logout();

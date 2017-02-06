@@ -1,5 +1,11 @@
 # efChat
 
+![alt text](app/images/login.png)
+
+![alt text](app/images/chatroom1.png)
+
+![alt text](app/images/chatroom2.png)
+
 
 ### Client Build
 
@@ -93,4 +99,6 @@ ChatRoomCtrl
 
 ### Testing
 
-Running `grunt test` will run the unit tests with karma.
+- Since the application makes use of Auth token, we need to generate it by authenticating.
+- Running `grunt test` will run the unit tests with karma.
+- Or get into the /test directory and run the `karma start` command.

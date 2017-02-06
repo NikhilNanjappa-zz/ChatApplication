@@ -21,7 +21,8 @@ describe('Service: messageService', function() {
 
   it('should call the send method', function () {
     var deferred = $q.defer();
-    var token = 'xxx';
+
+    var token = sessionStorage.AuthToken;
     var requestData = {
       'to': 'recipient',
       'content': 'hello'
@@ -34,7 +35,7 @@ describe('Service: messageService', function() {
 
   it('should call the registeredUser method', function () {
     var deferred = $q.defer();
-    var token = 'xxx';
+    var token = sessionStorage.AuthToken;
 
     spyOn(messageService, 'registeredUsers').and.returnValue(deferred.promise);
     scope.init();
@@ -43,7 +44,7 @@ describe('Service: messageService', function() {
 
   it('should call the seeConversation method', function () {
     var deferred = $q.defer();
-    var token = 'xxx';
+    var token = sessionStorage.AuthToken;
     var recipient = 'name';
 
     spyOn(messageService, 'seeConversation').and.returnValue(deferred.promise);
