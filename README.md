@@ -100,4 +100,4 @@ ChatRoomCtrl
 
 - Since the application makes use of Auth token, we need to generate it by authenticating.
 - Running `grunt test` will run the unit tests with karma.
-- Or get into the /test directory and run the `karma start` command.
+- Or from inside the `/test` directory and run the `karma start` command.
