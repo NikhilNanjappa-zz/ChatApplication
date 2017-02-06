@@ -2,10 +2,9 @@
 
 ![alt text](app/images/login.png)
 
-![alt text](app/images/chatroom1.png)
-
 ![alt text](app/images/chatroom2.png)
 
+![alt text](app/images/chatroom1.png)
 
 ### Client Build
 
