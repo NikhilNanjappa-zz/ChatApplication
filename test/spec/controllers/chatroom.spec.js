@@ -12,11 +12,8 @@ describe('Controller: ChatRoomCtrl', function () {
     scope = $rootScope.$new();
     ChatRoomCtrl = $controller('ChatRoomCtrl', {
       $scope: scope
-      // place here mocked dependencies
+      // mocked dependencies
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(ChatRoomCtrl.awesomeThings.length).toBe(3);
-  });
 });

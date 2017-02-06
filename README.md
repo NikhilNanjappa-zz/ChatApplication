@@ -13,6 +13,8 @@
 
 5) Run `grunt serve` to preview the app in a default browser.
 
+Note: These instructions are only to get the frontend up and running. The server has to be built and run parallelly for the apis to work.  
+
 ### Implementation Overview
 
 Let me start by listing all the controllers and services in the SPA and dive into the details later.

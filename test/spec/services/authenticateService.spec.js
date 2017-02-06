@@ -2,32 +2,59 @@
  * Created by nikhilnanjappa on 05/02/2017.
  */
 
-describe('Authenticate Service', function() {
-
-  var authenticateService = null;
+describe('Service: authenticateService', function() {
 
   // load the controller's module
   beforeEach(module('efAppApp'));
 
-  beforeEach(inject(function (_authenticateService_, _$httpBackend_) {
+  var MainCtrl, HomeCtrl, scope, authenticateService, $q;
+
+  // Initialize the controller and a mock scope
+  beforeEach(inject(function ($controller, _authenticateService_, _$q_, $rootScope) {
+    scope = $rootScope.$new();
+    $q = _$q_;
     authenticateService = _authenticateService_;
-    $httpBackend = _$httpBackend_;
-  }));
-
-  it('should return a token string', function(){
-    var creds = {};
-    creds.userName = 'foo';
-    creds.password = 'bar';
-    var expectedData = '';
-    var actualResult;
-
-    $httpBackend.whenPOST('http://localhost:8080/login').respond(200, expectedData);
-    authenticateService.verify(creds, 'login').then(function(response) {
-      actualResult = response;
+    MainCtrl = $controller('MainCtrl', {
+      $scope: scope
     });
 
-    $httpBackend.flush();
+    HomeCtrl = $controller('HomeCtrl', {
+      $scope: scope
+    });
 
+  }));
+
+  it('should call the login method', function () {
+    var deferred = $q.defer();
+    var credentials = {
+      'username': 'first',
+      'password': 'pass'
+    };
+
+    spyOn(authenticateService, 'verify').and.returnValue(deferred.promise);
+    scope.authenticate('first', 'pass', 'login');
+    expect(authenticateService.verify).toHaveBeenCalledWith(credentials, 'login');
+  });
+
+  it('should call the register method', function () {
+    var deferred = $q.defer();
+    var credentials = {
+      'username': 'first',
+      'password': 'pass'
+    };
+
+    spyOn(authenticateService, 'verify').and.returnValue(deferred.promise);
+    scope.authenticate('first', 'pass', 'register');
+    expect(authenticateService.verify).toHaveBeenCalledWith(credentials, 'register');
+  });
+
+  it('should call the logout method', function () {
+    var deferred = $q.defer();
+    var token = 'xxx';
+
+    spyOn(authenticateService, 'logout').and.returnValue(deferred.promise);
+    scope.logout();
+    expect(authenticateService.logout).toHaveBeenCalledWith(token);
   });
 
 });

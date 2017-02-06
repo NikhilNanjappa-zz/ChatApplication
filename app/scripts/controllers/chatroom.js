@@ -34,7 +34,6 @@ angular.module('efAppApp')
       // service call
       websocketService.connect(sessionStorage.AuthToken, function(response) {
         var obj = JSON.parse(response.data);
-        console.log(obj);
 
         // On UserOnline event - iterate through each existing user list & update the status for the user who came online
         if(obj.topic === 'user-online') {
@@ -92,6 +91,8 @@ angular.module('efAppApp')
 
     // Function called when the current wants to see the previous chat conversations of any user
     $scope.seeConversation = function(recipient) {
+      $scope.conversationMessages = [];
+
       // service call
       messageService.seeConversation(sessionStorage.AuthToken).then(function(response) {
         if(response.statusText === 'OK') {
@@ -103,11 +104,16 @@ angular.module('efAppApp')
             });
           });
 
-          $scope.conversationMessages = e.messages;
+          if (e === undefined) {
+            // If no conversations were found for that user
+            Notification.error('Sorry, you have no conversation history');
+          } else {
+            $scope.conversationMessages = e.messages;
 
-          // hide-show the necessary divs in the markup
-          $scope.seeConversations = true;
-          $scope.conversate = false;
+            // hide-show the necessary divs in the markup
+            $scope.seeConversations = true;
+            $scope.conversate = false;
+          }
         }
       });
     };

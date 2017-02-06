@@ -8,7 +8,7 @@ angular.module('efAppApp')
   .controller('HomeCtrl', function ($scope, $location, authenticateService) {
     // This controller is created only to access control outside the ng view scope - header logout etc.
 
-    // to show-hide the logout button
+    // hide the logout button
     $scope.loggedin = false;
 
     // when logout button is clicked
