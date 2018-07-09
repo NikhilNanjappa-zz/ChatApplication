@@ -1,5 +1,5 @@
 {
-  "generator-karma": {
+  "generator-karmala": {
     "base-path": "../",
     "frameworks": "jasmine",
     "browsers": "PhantomJS",
