@@ -17,7 +17,7 @@
     "restify": "^4.1.1",
     "restify-cors-middleware": "0.0.7",
     "tingodb": "^0.4.2",
-    "ws": "^1.1.1"
+    "ws": "^7.2.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
